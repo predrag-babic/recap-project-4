@@ -7,9 +7,9 @@ function App() {
     <>
       <h1>Theme Creator</h1>
 
-      {initialColors.map((color) => {
-        return <Color key={color.id} color={color} />;
-      })}
+      {initialColors.map((color) => (
+        <Color key={color.id} color={color} />
+      ))}
     </>
   );
 }
