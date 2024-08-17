@@ -4,3 +4,15 @@
   gap: 10px;
   margin-bottom: 20px;
 }
+
+.color-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.color-form input {
+  padding: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+}

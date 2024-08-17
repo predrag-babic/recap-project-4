@@ -1,3 +1,6 @@
+import "./ColorForm.css";
+import ColorInput from "./ColorInput";
+
 export default function ColorForm({
   onSubmitColor,
   startData = {
@@ -24,6 +27,20 @@ export default function ColorForm({
           defaultValue={startData.role}
         />
       </label>
+      <label htmlFor="hex">
+        {" "}
+        Hex
+        <ColorInput id="hex" name="hex" defaultValue={startData.hex} />
+      </label>
+      <label htmlFor="contrast-text">
+        Contrast Text
+        <ColorInput
+          id="contrast-text"
+          name="contrast-text"
+          defaultValue={startData.contrastText}
+        />
+      </label>
+      <button type="submit">ADD COLOR</button>
     </form>
   );
 }
