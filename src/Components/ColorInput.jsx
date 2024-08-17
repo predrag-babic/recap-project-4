@@ -16,7 +16,13 @@ export default function ColorInput({ id, defaultValue }) {
         value={inputValue}
         onChange={handleInput}
       />
-      <input type="color" value={inputValue} onChange={handleInput} />
+      <input
+        type="color"
+        id={`${id}-color`}
+        name={id}
+        value={inputValue}
+        onChange={handleInput}
+      />
     </Fragment>
   );
 }
