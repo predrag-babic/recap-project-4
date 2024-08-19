@@ -21,15 +21,19 @@ function App() {
     <>
       <h1>Theme Creator</h1>
       <ColorForm onSubmitColor={handleAddColor} />
-      <ul>
-        {colors.map((color) => {
-          return (
-            <li key={color.id}>
-              <Color color={color} onDeleteColor={handleDeleteColor} />
-            </li>
-          );
-        })}
-      </ul>
+      {colors.length === 0 ? (
+        <p>No colors.. start by adding one!</p>
+      ) : (
+        <ul>
+          {colors.map((color) => {
+            return (
+              <li key={color.id}>
+                <Color color={color} onDeleteColor={handleDeleteColor} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 }
