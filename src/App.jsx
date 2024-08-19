@@ -25,7 +25,7 @@ function App() {
         {colors.map((color) => {
           return (
             <li key={color.id}>
-              <Color color={color} />
+              <Color color={color} onDeleteColor={handleDeleteColor} />
             </li>
           );
         })}
