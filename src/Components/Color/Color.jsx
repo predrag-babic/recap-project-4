@@ -42,6 +42,7 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
         <ColorForm
           onSubmitColor={handleUpdateColor}
           startData={color}
+          buttonText="UPDATE COLOR"
           onCancel={handleCancelEditing}
         />
       ) : (
