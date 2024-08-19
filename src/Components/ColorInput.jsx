@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 export default function ColorInput({ id, defaultValue }) {
   const [inputValue, setInputValue] = useState(defaultValue);
@@ -8,7 +8,7 @@ export default function ColorInput({ id, defaultValue }) {
   }
 
   return (
-    <Fragment>
+    <div>
       <input
         type="text"
         id={id}
@@ -23,6 +23,6 @@ export default function ColorInput({ id, defaultValue }) {
         value={inputValue}
         onChange={handleInput}
       />
-    </Fragment>
+    </div>
   );
 }
