@@ -12,6 +12,11 @@ function App() {
     const colorWithId = { ...newColor, id: nanoid() };
     setColors([colorWithId, ...colors]);
   }
+
+  function handleDeleteColor(id) {
+    const filteredColors = colors.filter((color) => color.id !== id);
+    setColors(filteredColors);
+  }
   return (
     <>
       <h1>Theme Creator</h1>
