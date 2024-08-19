@@ -40,7 +40,10 @@ export default function Color({ color, onDeleteColor }) {
           <button onClick={handleCancelDelete}>No</button>
         </div>
       ) : (
-        <button onClick={handleDeleteColor}>Delete</button>
+        <>
+          <button onClick={handleDeleteColor}>Delete</button>
+          <button onClick={handleDeleteColor}>Edit</button>
+        </>
       )}
     </div>
   );
