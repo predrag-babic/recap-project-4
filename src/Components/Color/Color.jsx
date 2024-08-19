@@ -3,6 +3,7 @@ import "./Color.css";
 
 export default function Color({ color, onDeleteColor }) {
   const [showConfirmText, setShowConfirmText] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   function handleDeleteColor() {
     setShowConfirmText(true);
@@ -14,6 +15,10 @@ export default function Color({ color, onDeleteColor }) {
 
   function handleCancelDelete() {
     setShowConfirmText(false);
+  }
+
+  function handleEditColor() {
+    setIsEditing(true);
   }
   return (
     <div
