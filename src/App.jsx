@@ -12,19 +12,28 @@ function App() {
     const colorWithId = { ...newColor, id: nanoid() };
     setColors([colorWithId, ...colors]);
   }
+
+  function handleDeleteColor(id) {
+    const filteredColors = colors.filter((color) => color.id !== id);
+    setColors(filteredColors);
+  }
   return (
     <>
       <h1>Theme Creator</h1>
       <ColorForm onSubmitColor={handleAddColor} />
-      <ul>
-        {colors.map((color) => {
-          return (
-            <li key={color.id}>
-              <Color color={color} />
-            </li>
-          );
-        })}
-      </ul>
+      {colors.length === 0 ? (
+        <p>No colors.. start by adding one!</p>
+      ) : (
+        <ul>
+          {colors.map((color) => {
+            return (
+              <li key={color.id}>
+                <Color color={color} onDeleteColor={handleDeleteColor} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 }
