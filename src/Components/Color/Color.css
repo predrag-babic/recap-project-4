@@ -21,3 +21,9 @@ ul {
   margin: 0px 4px;
   padding: 5px;
 }
+
+.copied-message {
+  color: #28a745;
+  font-size: 12px;
+  margin-top: 5px;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Color.css";
 import ColorForm from "../ColorForm";
+import CopyToClipboard from "../CopyToClipboard";
 
 export default function Color({ color, onDeleteColor, onUpdateColor }) {
   const [showConfirmText, setShowConfirmText] = useState(false);
@@ -47,9 +48,13 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
         />
       ) : (
         <>
-          <h3 className="color-card-headline ">{color.hex}</h3>
+          <div className="color-card-header">
+            <h3 className="color-card-headline ">{color.hex}</h3>
+            <CopyToClipboard hex={color.hex} />
+          </div>
           <h4>{color.role}</h4>
           <p>contrast Text: {color.contrastText}</p>
+
           {showConfirmText ? (
             <div>
               <p className="color-card-highlight">

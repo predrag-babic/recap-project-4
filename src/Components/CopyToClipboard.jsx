@@ -22,7 +22,7 @@ export default function CopyToClipboard({ hex }) {
   return (
     <div>
       <button onClick={handleCopyToClipboard}>Copy to Clipboard</button>
-      {isCopied && <p>SUCCESSFULLY COPIED!</p>}
+      {isCopied && <p className="copied-message">SUCCESSFULLY COPIED!</p>}
     </div>
   );
 }
