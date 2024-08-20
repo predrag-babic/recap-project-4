@@ -18,4 +18,11 @@ export default function CopyToClipboard({ hex }) {
       return () => clearInterval(timer);
     }
   }, [isCopied]);
+
+  return (
+    <div>
+      <button onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+      {isCopied && <p>SUCCESSFULLY COPIED!</p>}
+    </div>
+  );
 }
