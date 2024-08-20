@@ -20,9 +20,8 @@ export default function CopyToClipboard({ hex }) {
   }, [isCopied]);
 
   return (
-    <div>
-      <button onClick={handleCopyToClipboard}>Copy to Clipboard</button>
-      {isCopied && <p className="copied-message">SUCCESSFULLY COPIED!</p>}
-    </div>
+    <button onClick={handleCopyToClipboard}>
+      {isCopied ? "SUCCESSFULLY COPIED!" : "COPY"}
+    </button>
   );
 }

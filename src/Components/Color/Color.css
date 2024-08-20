@@ -22,8 +22,7 @@ ul {
   padding: 5px;
 }
 
-.copied-message {
-  color: #28a745;
-  font-size: 12px;
-  margin-top: 5px;
+.color-card-header {
+  display: flex;
+  align-items: center;
 }
