@@ -1,5 +1,6 @@
 import "./ColorForm.css";
 import ColorInput from "./ColorInput";
+import { useState } from "react";
 
 export default function ColorForm({
   onSubmitColor,
@@ -11,11 +12,17 @@ export default function ColorForm({
   onCancel,
   buttonText = "ADD COLOR",
 }) {
+  const [formValues, setFormValues] = useState(startData);
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    onSubmitColor(data);
+    // const formData = new FormData(event.target);
+    // const data = Object.fromEntries(formData);
+    onSubmitColor(formValues);
+  }
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormValues({ ...formValues, [name]: value });
   }
 
   return (
@@ -26,20 +33,27 @@ export default function ColorForm({
           type="text"
           id="role"
           name="role"
-          defaultValue={startData.role}
+          value={formValues.role}
+          onChange={handleInputChange}
         />
       </label>
       <label htmlFor="hex">
         {" "}
         Hex
-        <ColorInput id="hex" name="hex" defaultValue={startData.hex} />
+        <ColorInput
+          id="hex"
+          name="hex"
+          defaultValue={formValues.hex}
+          onChange={handleInputChange}
+        />
       </label>
       <label htmlFor="contrast-text">
         Contrast Text
         <ColorInput
           id="contrast-text"
-          name="contrast-text"
-          defaultValue={startData.contrastText}
+          name="contrastText"
+          defaultValue={formValues.contrastText}
+          onChange={handleInputChange}
         />
       </label>
       <button type="submit">{buttonText}</button>
