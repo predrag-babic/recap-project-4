@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Color.css";
+import "./ColorCard.css";
 import ColorForm from "../ColorForm";
 import CopyToClipboard from "../CopyToClipboard";
 

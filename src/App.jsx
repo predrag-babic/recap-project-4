@@ -1,5 +1,5 @@
 import { initialColors } from "./lib/colors";
-import Color from "./Components/Color/Color";
+import ColorCard from "./Components/Color/ColorCard";
 import "./App.css";
 import ColorForm from "./Components/ColorForm";
 import { nanoid } from "nanoid";
@@ -38,7 +38,7 @@ function App() {
           {colors.map((color) => {
             return (
               <li key={color.id}>
-                <Color
+                <ColorCard
                   color={color}
                   onDeleteColor={handleDeleteColor}
                   onUpdateColor={handleUpdateColor}
