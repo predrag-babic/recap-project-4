@@ -21,3 +21,8 @@ ul {
   margin: 0px 4px;
   padding: 5px;
 }
+
+.color-card-header {
+  display: flex;
+  align-items: center;
+}
