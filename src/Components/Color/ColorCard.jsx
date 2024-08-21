@@ -3,7 +3,7 @@ import "./ColorCard.css";
 import ColorForm from "../ColorForm";
 import CopyToClipboard from "../CopyToClipboard";
 
-export default function Color({ color, onDeleteColor, onUpdateColor }) {
+export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
   const [showConfirmText, setShowConfirmText] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
