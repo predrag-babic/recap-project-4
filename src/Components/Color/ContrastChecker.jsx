@@ -1,23 +1,24 @@
-async function checkContrast(hex, contrastText) {
-  const response = await fetch(
-    "https://www.aremycolorsaccessible.com/api/are-they",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        foregroundColor: contrastText,
-        backgroundColor: hex,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+import { useEffect, useState } from "react";
 
-  if (response.ok) {
-    const data = await response.json();
-    return data;
-  } else {
-    console.error("Failed to fetch!!");
-    return null;
-  }
+export default function ContrastChecker({ hex, contrastText }) {
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    async function postFetch() {
+      fetch("https://www.aremycolorsaccessible.com/api/are-they", {
+        method: "POST",
+        body: JSON.stringify({ colors: [hex, contrastText] }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          setResult(json.overall);
+        });
+    }
+    postFetch();
+  });
+
+  return <div>Contrast Score: {result}</div>;
 }
