@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./ColorCard.css";
 import ColorForm from "../ColorForm";
 import CopyToClipboard from "../CopyToClipboard";
+import ContrastChecker from "./ContrastChecker";
 
 export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
   const [showConfirmText, setShowConfirmText] = useState(false);
@@ -54,6 +55,7 @@ export default function ColorCard({ color, onDeleteColor, onUpdateColor }) {
           </div>
           <h4>{color.role}</h4>
           <p>contrast Text: {color.contrastText}</p>
+          <ContrastChecker hex={color.hex} contrastText={color.contrastText} />
 
           {showConfirmText ? (
             <div>
