@@ -1,4 +1,4 @@
-import { initialColors } from "./lib/colors";
+//import { initialColors } from "./lib/colors";
 import ColorCard from "./Components/Color/ColorCard";
 import "./App.css";
 import ColorForm from "./Components/ColorForm";
@@ -73,7 +73,7 @@ function App() {
 
   function handleRenameTheme() {
     const updatedThemes = themes.map((theme) =>
-      theme.id === selectedThemeId ? { ...theme, name: newThemeName } : theme
+      theme.id === selectedThemeId ? { ...theme, name: newTheme } : theme
     );
     setThemes(updatedThemes);
     setIsEditing(false);
@@ -94,6 +94,7 @@ function App() {
 
   return (
     <>
+      <h1>Theme Creator</h1>
       <div>
         <select value={selectedThemeId} onChange={handleSelectTheme}>
           {themes.map((theme) => (
@@ -104,18 +105,34 @@ function App() {
         </select>
         <button onClick={handleAddTheme}>ADD</button>
         {selectedThemeId !== "t1" && (
-          <button onClick={() => handleDeleteTheme(selectedThemeId)}>
-            DELETE
-          </button>
+          <>
+            <button onClick={() => handleDeleteTheme(selectedThemeId)}>
+              DELETE
+            </button>
+
+            {isEditing ? (
+              <>
+                <input
+                  type="text"
+                  value={newTheme}
+                  onChange={(event) => setNewTheme(event.target.value)}
+                />
+                <button onClick={handleRenameTheme}>Update</button>
+                <button onClick={handleCancelEditing}>Cancel</button>
+              </>
+            ) : (
+              <button onClick={handleEditingTheme}>EDIT</button>
+            )}
+          </>
         )}
       </div>
-      <h1>Theme Creator</h1>
+
       <ColorForm onSubmitColor={handleAddColor} />
-      {colors.length === 0 ? (
+      {selectedTheme.colors.length === 0 ? (
         <p>No colors.. start by adding one!</p>
       ) : (
         <ul>
-          {colors.map((color) => {
+          {selectedTheme.colors.map((color) => {
             return (
               <li key={color.id}>
                 <ColorCard
