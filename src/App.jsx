@@ -3,13 +3,18 @@ import ColorCard from "./Components/Color/ColorCard";
 import "./App.css";
 import ColorForm from "./Components/ColorForm";
 import { nanoid } from "nanoid";
-
+import { initialThemes } from "./lib/themes";
 import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 
 function App() {
-  const [colors, setColors] = useLocalStorageState("color", {
-    defaultValue: initialColors,
+  const [themes, setThemes] = useLocalStorageState("themes", {
+    defaultValue: initialThemes,
   });
+
+  const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTheme, setNewTheme] = useState("");
 
   function handleAddColor(newColor) {
     const colorWithId = { ...newColor, id: nanoid() };
