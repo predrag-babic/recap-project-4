@@ -71,6 +71,27 @@ function App() {
     setSelectedThemeId(updatedThemes[0].id);
   }
 
+  function handleRenameTheme() {
+    const updatedThemes = themes.map((theme) =>
+      theme.id === selectedThemeId ? { ...theme, name: newThemeName } : theme
+    );
+    setThemes(updatedThemes);
+    setIsEditing(false);
+  }
+
+  function handleSelectTheme(event) {
+    setSelectedThemeId(event.target.value);
+  }
+
+  function handleEditingTheme() {
+    setNewTheme(selectedTheme.name);
+    setIsEditing(true);
+  }
+
+  function handleCancelEditing() {
+    setIsEditing(false);
+  }
+
   return (
     <>
       <h1>Theme Creator</h1>
