@@ -94,6 +94,21 @@ function App() {
 
   return (
     <>
+      <div>
+        <select value={selectedThemeId} onChange={handleSelectTheme}>
+          {themes.map((theme) => (
+            <option key={theme.id} value={theme.id}>
+              {theme.name}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleAddTheme}>ADD</button>
+        {selectedThemeId !== "t1" && (
+          <button onClick={() => handleDeleteTheme(selectedThemeId)}>
+            DELETE
+          </button>
+        )}
+      </div>
       <h1>Theme Creator</h1>
       <ColorForm onSubmitColor={handleAddColor} />
       {colors.length === 0 ? (
