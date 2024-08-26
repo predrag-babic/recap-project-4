@@ -15,6 +15,7 @@ function App() {
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
   const [isEditing, setIsEditing] = useState(false);
   const [newTheme, setNewTheme] = useState("");
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
   const selectedTheme = themes.find((theme) => theme.id === selectedThemeId);
 
@@ -92,9 +93,23 @@ function App() {
     setIsEditing(false);
   }
 
+  function handleDeleteThemeClick() {
+    setShowConfirmDelete(true);
+  }
+
+  function handleConfirmThemeDelete() {
+    handleDeleteTheme(selectedThemeId);
+    setShowConfirmDelete(false);
+  }
+
+  function handleCancelConfirmDelete() {
+    setShowConfirmDelete(false);
+  }
+
   return (
     <>
       <h1>Theme Creator</h1>
+
       <div>
         <select value={selectedThemeId} onChange={handleSelectTheme}>
           {themes.map((theme) => (
@@ -106,9 +121,17 @@ function App() {
         <button onClick={handleAddTheme}>ADD</button>
         {selectedThemeId !== "t1" && (
           <>
-            <button onClick={() => handleDeleteTheme(selectedThemeId)}>
-              DELETE
-            </button>
+            {showConfirmDelete ? (
+              <>
+                <p className="color-card-highlight">
+                  Are you sure you want to delete this theme?
+                </p>
+                <button onClick={handleConfirmThemeDelete}>Yes</button>
+                <button onClick={handleCancelConfirmDelete}>No</button>
+              </>
+            ) : (
+              <button onClick={handleDeleteThemeClick}>DELETE</button>
+            )}
 
             {isEditing ? (
               <>
